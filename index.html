@@ -190,9 +190,12 @@ async function fetchNRBRates() {
       const name = rate.currency.name;
       const buy = rate.buy;
 
-      // FIX FOR UNITS
+      // ✅ FIXED UNITS AS REQUESTED
       let unit = rate.unit ?? 1;
+
       if (code === "INR") unit = 100;
+      if (code === "KRW") unit = 100;
+      if (code === "JPY") unit = 10;
 
       const flag = flagMap[code]
         ? `<img src="https://flagcdn.com/w40/${flagMap[code]}.png" class="currency-flag" alt="${code}">`
